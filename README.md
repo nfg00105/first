@@ -38,7 +38,7 @@ Node.js 20 이상을 권장합니다.
 
 | 이름 | 설명 |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | 배포된 사이트 주소 (예: `https://example.com`). sitemap, robots, canonical, Open Graph에 사용. 미설정 시 `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL` | 사이트 주소 (예: `https://example.com`). sitemap, robots, canonical, Open Graph에 사용. 미설정 시 Vercel 프로덕션 도메인, 그것도 없으면 `http://localhost:3000` |
 
 ## 배포 (Vercel)
 
