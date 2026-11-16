@@ -39,19 +39,14 @@ const jsonLd = {
   sameAs: resume.profile.links.map((l) => l.url),
 };
 
-// 첫 페인트 전에 저장된 테마를 적용해 깜빡임을 방지
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})();`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      // 다크 모드로 고정
+      className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body>
         <a
           href="#main"

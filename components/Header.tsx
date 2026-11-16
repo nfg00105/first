@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { id: "about", label: "About" },
@@ -70,7 +69,7 @@ export default function Header({
         </Link>
         <nav aria-label="주요 메뉴" className="flex min-w-0 items-center gap-1 sm:gap-3">
           {/* 모바일에서는 가로 스크롤 메뉴로 표시 */}
-          <ul className="flex min-w-0 items-center gap-1 overflow-x-auto">
+          <ul className="flex min-w-0 items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {navItems.map(({ id, label }) => (
               <li key={id}>
                 <a
@@ -85,7 +84,6 @@ export default function Header({
               </li>
             ))}
           </ul>
-          <ThemeToggle />
         </nav>
       </div>
     </header>
