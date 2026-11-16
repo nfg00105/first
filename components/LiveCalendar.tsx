@@ -37,7 +37,7 @@ export default function LiveCalendar() {
       aria-label="실시간 달력"
       className="no-print animate-float border-accent/30 bg-card/70 w-full max-w-sm rounded-2xl border p-5 shadow-[0_0_40px_-8px_var(--accent)] backdrop-blur-md sm:p-6"
     >
-      <div className="mb-4 flex items-end justify-between gap-3">
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-x-3 gap-y-1">
         <div>
           <p className="shine-text text-2xl font-extrabold tracking-tight sm:text-3xl">
             {now ? `${year}년 ${month + 1}월` : " "}
