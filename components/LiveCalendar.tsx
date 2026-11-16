@@ -19,14 +19,13 @@ const getServerSecond = () => 0;
 const FOLLOW_RANGE = 60;
 const FOLLOW_EASING = 0.08;
 
-// 실시간 달력: 1초마다 시계가 갱신되고 오늘 날짜가 강조됨
-// 기본은 위아래로 둥실 떠다니며, followMouse가 켜지면 마우스의 세로 위치를 따라 움직임
-export default function LiveCalendar({ followMouse = false }: { followMouse?: boolean }) {
+// 실시간 달력: 1초마다 시계가 갱신되고 오늘 날짜가 강조되며, 마우스의 세로 위치를 따라 움직임
+export default function LiveCalendar() {
   const cardRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
-    if (!followMouse || !card) return;
+    if (!card) return;
     // 마우스를 움직일 때만 반응하는 사용자 주도 움직임이라 모션 감소 설정과 무관하게 동작시킴
     // (스스로 반복하는 애니메이션만 모션 감소 설정에서 멈춤)
 
@@ -52,7 +51,7 @@ export default function LiveCalendar({ followMouse = false }: { followMouse?: bo
       window.removeEventListener("pointermove", onMove);
       cancelAnimationFrame(frame);
     };
-  }, [followMouse]);
+  }, []);
 
   // 1초 단위 현재 시각 구독. 서버 렌더/하이드레이션 중에는 0을 반환해 불일치를 피함
   const second = useSyncExternalStore(subscribeEverySecond, getSecond, getServerSecond);
@@ -73,7 +72,7 @@ export default function LiveCalendar({ followMouse = false }: { followMouse?: bo
     <section
       ref={cardRef}
       aria-label="실시간 달력"
-      className={`no-print ${followMouse ? "will-change-transform" : "animate-float"} border-accent/30 bg-card/70 w-full max-w-sm rounded-2xl border p-5 shadow-[0_0_40px_-8px_var(--accent)] backdrop-blur-md sm:p-6`}
+      className="no-print border-accent/30 bg-card/70 w-full max-w-sm rounded-2xl border p-5 shadow-[0_0_40px_-8px_var(--accent)] backdrop-blur-md will-change-transform sm:p-6"
     >
       <div className="mb-4 flex flex-wrap items-end justify-between gap-x-3 gap-y-1">
         <div>

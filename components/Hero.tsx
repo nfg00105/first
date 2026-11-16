@@ -29,7 +29,7 @@ export default function Hero({ profile }: { profile: Profile }) {
         </div>
       </div>
       <div className="flex shrink-0 justify-center lg:justify-end">
-        <LiveCalendar followMouse />
+        <LiveCalendar />
       </div>
     </section>
   );

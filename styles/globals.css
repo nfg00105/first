@@ -47,7 +47,6 @@ html {
     animation-duration: 0.01ms !important;
   }
   /* 반복 애니메이션은 깜빡임 방지를 위해 아예 멈춤 */
-  .animate-float,
   .shine-text,
   .animate-pulse {
     animation: none !important;
@@ -77,21 +76,6 @@ html {
   to {
     background-position: -50% 0;
   }
-}
-
-/* 위아래로 둥실 떠다니는 움직임 */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(-12px);
-  }
-  50% {
-    transform: translateY(12px);
-  }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
 }
 
 /* 키보드 탐색용 포커스 표시 */
