@@ -28,7 +28,7 @@ export default function About({ data }: { data: AboutData }) {
             ))}
           </ul>
           <div className="mt-8 flex justify-center">
-            <LiveCalendar />
+            <LiveCalendar followMouse />
           </div>
         </div>
       </div>

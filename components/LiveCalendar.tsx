@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 // 항상 6주(42칸)로 그려서 달이 바뀌어도 높이가 흔들리지 않게 함
@@ -15,8 +15,45 @@ function subscribeEverySecond(onChange: () => void) {
 const getSecond = () => Math.floor(Date.now() / 1000);
 const getServerSecond = () => 0;
 
-// 실시간 달력: 1초마다 시계가 갱신되고 오늘 날짜가 강조되며, 위아래로 둥실 떠다님
-export default function LiveCalendar() {
+// 마우스 세로 위치를 따라 움직일 때의 최대 이동 거리(px)와 따라가는 부드러움(0~1)
+const FOLLOW_RANGE = 60;
+const FOLLOW_EASING = 0.08;
+
+// 실시간 달력: 1초마다 시계가 갱신되고 오늘 날짜가 강조됨
+// 기본은 위아래로 둥실 떠다니며, followMouse가 켜지면 마우스의 세로 위치를 따라 움직임
+export default function LiveCalendar({ followMouse = false }: { followMouse?: boolean }) {
+  const cardRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!followMouse || !card) return;
+    // 모션 감소 설정을 켠 사용자에게는 움직이지 않음
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let target = 0;
+    let current = 0;
+    let frame = 0;
+
+    const step = () => {
+      current += (target - current) * FOLLOW_EASING;
+      card.style.transform = `translateY(${current.toFixed(2)}px)`;
+      // 목표에 충분히 가까워지면 루프를 멈춰 불필요한 렌더링을 피함
+      frame = Math.abs(target - current) > 0.1 ? requestAnimationFrame(step) : 0;
+    };
+
+    const onMove = (e: PointerEvent) => {
+      // 화면 위쪽 끝 = -FOLLOW_RANGE, 아래쪽 끝 = +FOLLOW_RANGE
+      target = (e.clientY / window.innerHeight - 0.5) * 2 * FOLLOW_RANGE;
+      if (!frame) frame = requestAnimationFrame(step);
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(frame);
+    };
+  }, [followMouse]);
+
   // 1초 단위 현재 시각 구독. 서버 렌더/하이드레이션 중에는 0을 반환해 불일치를 피함
   const second = useSyncExternalStore(subscribeEverySecond, getSecond, getServerSecond);
   const now = second ? new Date(second * 1000) : null;
@@ -34,8 +71,9 @@ export default function LiveCalendar() {
 
   return (
     <section
+      ref={cardRef}
       aria-label="실시간 달력"
-      className="no-print animate-float border-accent/30 bg-card/70 w-full max-w-sm rounded-2xl border p-5 shadow-[0_0_40px_-8px_var(--accent)] backdrop-blur-md sm:p-6"
+      className={`no-print ${followMouse ? "will-change-transform" : "animate-float"} border-accent/30 bg-card/70 w-full max-w-sm rounded-2xl border p-5 shadow-[0_0_40px_-8px_var(--accent)] backdrop-blur-md sm:p-6`}
     >
       <div className="mb-4 flex flex-wrap items-end justify-between gap-x-3 gap-y-1">
         <div>
