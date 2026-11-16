@@ -27,8 +27,8 @@ export default function LiveCalendar({ followMouse = false }: { followMouse?: bo
   useEffect(() => {
     const card = cardRef.current;
     if (!followMouse || !card) return;
-    // 모션 감소 설정을 켠 사용자에게는 움직이지 않음
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // 마우스를 움직일 때만 반응하는 사용자 주도 움직임이라 모션 감소 설정과 무관하게 동작시킴
+    // (스스로 반복하는 애니메이션만 모션 감소 설정에서 멈춤)
 
     let target = 0;
     let current = 0;
