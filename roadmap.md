@@ -58,7 +58,7 @@
 - [x] Skills, Experience 섹션
 - [x] Projects 섹션 (카드 UI, 상세 모달 또는 상세 페이지)
 - [x] Education, Contact 섹션
-- [ ] 반응형 대응 (모바일 → 태블릿 → 데스크톱)
+- [x] 반응형 대응 (모바일 → 태블릿 → 데스크톱)
 
 ### Phase 3. 기능 및 UX 개선
 
