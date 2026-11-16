@@ -35,6 +35,7 @@ export interface Project {
   demoUrl?: string;
   githubUrl?: string;
   image?: string;
+  href?: string; // 사이트 내부 상세 페이지 경로
 }
 
 export interface Education {
@@ -58,4 +59,13 @@ export interface Resume {
   education: Education[];
   certifications: Certification[];
   lastUpdated: string;
+}
+
+// 어플 개발 프로그램 목록 (Supabase resume_programs 테이블)
+export interface Program {
+  id: string;
+  position: number;
+  name: string;
+  description: string;
+  url: string;
 }

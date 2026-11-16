@@ -21,24 +21,26 @@ Node.js 20 이상을 권장합니다.
 모든 이력서 내용은 [`data/resume.json`](data/resume.json)에서 관리합니다. 코드는 수정하지 않아도 됩니다.
 필드 구조는 [`types/resume.ts`](types/resume.ts)를 참고하세요.
 
-| 키 | 설명 |
-| --- | --- |
-| `profile` | 이름, 직무, 한 줄 소개, 이메일, 외부 링크, 이력서 PDF 경로(`resumePdf`) |
-| `about` | 자기소개, 개발 철학, 강점 |
-| `skills` | 분야별 기술 스택 |
-| `experience` | 경력 (회사, 기간, 역할, 성과) |
-| `projects` | 프로젝트 (설명, 기술, `demoUrl`, `githubUrl`, `image`) |
-| `education` / `certifications` | 학력 / 자격증 |
-| `lastUpdated` | 푸터에 표시되는 최종 업데이트 일자 (`YYYY-MM-DD`) |
+| 키                             | 설명                                                                    |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| `profile`                      | 이름, 직무, 한 줄 소개, 이메일, 외부 링크, 이력서 PDF 경로(`resumePdf`) |
+| `about`                        | 자기소개, 개발 철학, 강점                                               |
+| `skills`                       | 분야별 기술 스택                                                        |
+| `experience`                   | 경력 (회사, 기간, 역할, 성과)                                           |
+| `projects`                     | 프로젝트 (설명, 기술, `demoUrl`, `githubUrl`, `image`)                  |
+| `education` / `certifications` | 학력 / 자격증                                                           |
+| `lastUpdated`                  | 푸터에 표시되는 최종 업데이트 일자 (`YYYY-MM-DD`)                       |
 
 - **PDF 이력서**: 파일을 `public/`에 두고 `profile.resumePdf`에 `/resume.pdf`처럼 경로를 적으면 다운로드 버튼이 나타납니다. 브라우저 인쇄(`Ctrl+P`)로 PDF 저장도 가능합니다.
 - **프로젝트 이미지**: `public/projects/`에 두고 `image`에 `/projects/xxx.webp`처럼 적습니다.
 
 ## 환경변수
 
-| 이름 | 설명 |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | 사이트 주소 (예: `https://example.com`). sitemap, robots, canonical, Open Graph에 사용. 미설정 시 Vercel 프로덕션 도메인, 그것도 없으면 `http://localhost:3000` |
+| 이름                                   | 설명                                                                                                                                                            |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`                 | 사이트 주소 (예: `https://example.com`). sitemap, robots, canonical, Open Graph에 사용. 미설정 시 Vercel 프로덕션 도메인, 그것도 없으면 `http://localhost:3000` |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Supabase 프로젝트 URL (프로그램 목록 페이지용)                                                                                                                  |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable 키 (공개되어도 안전. `service_role` 키는 절대 넣지 않음)                                                                                   |
 
 ## 배포 (Vercel)
 
@@ -59,3 +61,11 @@ public/       정적 파일 (PDF, 이미지)
 styles/       globals.css (테마 변수, 인쇄 스타일)
 types/        resume.ts (데이터 스키마)
 ```
+
+## 어플 개발 프로그램 목록 (`/programs`)
+
+Projects 섹션의 "프로그램 목록 보기" 버튼으로 이동하는 페이지입니다. 순서 / 프로그램명 / 프로그램 설명 / 웹페이지 주소를 Supabase의 `resume_programs` 테이블에 저장해 모든 방문자와 공유합니다.
+
+- **조회**: 누구나 가능합니다.
+- **추가/수정/삭제**: 페이지의 "관리자 로그인"으로 로그인한 **관리자 계정**만 가능합니다. 관리자는 Supabase Auth 사용자의 `app_metadata.role = 'admin'`으로 지정하며(사용자가 스스로 바꿀 수 없음), 최종 권한 검사는 DB의 RLS 정책이 수행합니다.
+- 로컬 개발은 `.env.example`을 `.env.local`로 복사해 값을 채웁니다.

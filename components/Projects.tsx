@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Project } from "@/types/resume";
 import Section from "./Section";
 
@@ -31,6 +32,14 @@ export default function Projects({ items }: { items: Project[] }) {
                 </li>
               ))}
             </ul>
+            {p.href ? (
+              <Link
+                href={p.href}
+                className="bg-accent mt-4 inline-flex w-fit items-center rounded-md px-4 py-2 text-sm font-semibold text-white hover:opacity-90 dark:text-neutral-950"
+              >
+                프로그램 목록 보기 →
+              </Link>
+            ) : null}
             {p.demoUrl || p.githubUrl ? (
               <div className="mt-4 flex gap-4 text-sm font-medium">
                 {p.demoUrl ? (

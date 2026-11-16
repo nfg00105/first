@@ -36,7 +36,8 @@
     {
       "title": "어플 개발 프로젝트",
       "description": "새롭게 도전 중인 어플리케이션 개발 프로젝트입니다.",
-      "tech": ["App"]
+      "tech": ["App"],
+      "href": "/programs"
     }
   ],
   "education": [],
