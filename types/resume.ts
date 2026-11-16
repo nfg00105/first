@@ -4,6 +4,7 @@ export interface Profile {
   name: string;
   role: string;
   tagline: string;
+  motto?: string;
   email: string;
   resumePdf?: string;
   links: { label: string; url: string }[];
