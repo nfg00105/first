@@ -82,7 +82,7 @@
 - [ ] Vercel에 배포 및 프리뷰 환경 확인
 - [ ] 커스텀 도메인 연결 및 HTTPS 확인
 - [ ] 방문 분석 도입 (Vercel Analytics, Google Analytics 등, 선택)
-- [ ] README 작성 (실행 방법, 콘텐츠 수정 방법)
+- [x] README 작성 (실행 방법, 콘텐츠 수정 방법)
 - [ ] 이력서 링크를 GitHub, LinkedIn, 채용 플랫폼 프로필에 반영
 
 ### Phase 6. 지속 개선
