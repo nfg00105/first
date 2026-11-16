@@ -2,6 +2,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
+import Fireworks from "@/components/Fireworks";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <Fireworks />
       <Header name={resume.profile.name} hiddenSections={hiddenSections} />
       <main id="main">
         <Hero profile={resume.profile} />
