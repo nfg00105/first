@@ -51,7 +51,7 @@ export default function Header({
           href="/"
           aria-label={`${name} 홈으로 가기`}
           title="홈으로"
-          className="text-accent hover:bg-accent/10 focus-visible:ring-accent flex size-9 shrink-0 items-center justify-center rounded-full transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
+          className="text-accent hover:bg-accent/10 focus-visible:ring-accent flex size-11 shrink-0 items-center justify-center rounded-full transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ export default function Header({
             strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="size-5"
+            className="size-7"
             aria-hidden="true"
           >
             <path d="M3 10.5 12 3l9 7.5" />
