@@ -137,7 +137,19 @@ export default function Fireworks() {
       if (!document.hidden) rafId = requestAnimationFrame(frame);
     };
 
+    // 클릭/터치한 위치에서 바로 불꽃을 터뜨림
+    const onPointerDown = (e: PointerEvent) => {
+      explode({
+        x: e.clientX,
+        y: e.clientY,
+        vy: 0,
+        targetY: e.clientY,
+        hue: Math.floor(Math.random() * 360),
+      });
+    };
+
     resize();
+    window.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", onVisibility);
     // 첫 화면 렌더링(LCP)에 영향을 주지 않도록 약간 늦게 시작
@@ -148,6 +160,7 @@ export default function Fireworks() {
     return () => {
       window.clearTimeout(startTimer);
       cancelAnimationFrame(rafId);
+      window.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisibility);
     };
