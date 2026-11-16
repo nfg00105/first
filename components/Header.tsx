@@ -33,11 +33,12 @@ export default function Header({ name }: { name: string }) {
   return (
     <header className="no-print border-border bg-background/80 fixed inset-x-0 top-0 z-50 border-b backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-        <a href="#top" className="font-semibold">
+        <a href="#top" className="hidden shrink-0 pr-2 font-semibold sm:block">
           {name}
         </a>
-        <nav aria-label="주요 메뉴" className="flex items-center gap-1 sm:gap-3">
-          <ul className="hidden items-center gap-1 md:flex">
+        <nav aria-label="주요 메뉴" className="flex min-w-0 items-center gap-1 sm:gap-3">
+          {/* 모바일에서는 가로 스크롤 메뉴로 표시 */}
+          <ul className="flex min-w-0 items-center gap-1 overflow-x-auto">
             {NAV_ITEMS.map(({ id, label }) => (
               <li key={id}>
                 <a

@@ -37,6 +37,23 @@ html {
   scroll-padding-top: 4rem;
 }
 
+/* 모션 감소 설정을 존중 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* 키보드 탐색용 포커스 표시 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

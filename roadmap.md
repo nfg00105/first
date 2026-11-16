@@ -71,10 +71,10 @@
 
 ### Phase 4. 품질 및 최적화
 
-- [ ] 접근성 점검 (시맨틱 태그, alt 텍스트, 키보드 탐색, 명도 대비)
-- [ ] SEO (메타 태그, Open Graph, sitemap, robots.txt, 파비콘)
-- [ ] 이미지 최적화 (next/image, WebP)
-- [ ] Lighthouse 점수 90+ 달성 (Performance / Accessibility / Best Practices / SEO)
+- [x] 접근성 점검 (시맨틱 태그, alt 텍스트, 키보드 탐색, 명도 대비)
+- [x] SEO (메타 태그, Open Graph, sitemap, robots.txt, 파비콘)
+- [x] 이미지 최적화 (next/image, WebP)
+- [ ] Lighthouse 점수 90+ 달성 (Performance / Accessibility / Best Practices / SEO) <!-- 로컬 측정: A11y/BP/SEO 100, Performance(모바일) 84~99로 편차 큼 → 배포 후 재측정 -->
 - [ ] 크로스 브라우저 및 실제 모바일 기기 테스트
 
 ### Phase 5. 배포 및 운영

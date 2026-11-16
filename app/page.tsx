@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Header name={resume.profile.name} />
-      <main>
+      <main id="main">
         <Hero profile={resume.profile} />
         <About data={resume.about} />
         <Skills groups={resume.skills} />

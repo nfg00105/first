@@ -19,6 +19,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `npm run dev` 개발 서버 / `npm run build` 프로덕션 빌드 / `npm run lint` ESLint / `npx prettier --write app components data styles types` 포맷
 - 이 Next.js 버전은 기존 지식과 다를 수 있으므로 `AGENTS.md` 안내대로 `node_modules/next/dist/docs/`를 참고합니다.
+- 배포 URL은 `NEXT_PUBLIC_SITE_URL` 환경변수로 지정합니다(sitemap/robots/OG/canonical에 사용, `lib/site.ts`).
 - `LayoutProps` 같은 타입은 빌드/dev 시 생성되므로 `tsc --noEmit`은 한 번 빌드한 뒤 실행합니다.
 
 ## 아키텍처 원칙

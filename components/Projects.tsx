@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Project } from "@/types/resume";
 import Section from "./Section";
 
@@ -10,6 +11,17 @@ export default function Projects({ items }: { items: Project[] }) {
             key={p.title}
             className="border-border bg-card flex flex-col rounded-xl border p-5 transition-shadow hover:shadow-md"
           >
+            {p.image ? (
+              <div className="relative mb-4 aspect-video overflow-hidden rounded-lg">
+                <Image
+                  src={p.image}
+                  alt={`${p.title} 스크린샷`}
+                  fill
+                  sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : null}
             <h3 className="text-lg font-semibold">{p.title}</h3>
             <p className="text-muted mt-2 flex-1 text-sm leading-relaxed">{p.description}</p>
             <ul className="mt-4 flex flex-wrap gap-2">

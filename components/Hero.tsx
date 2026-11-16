@@ -12,7 +12,7 @@ export default function Hero({ profile }: { profile: Profile }) {
       <div className="no-print mt-8 flex flex-wrap gap-3">
         <a
           href={`mailto:${profile.email}`}
-          className="bg-accent rounded-md px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+          className="bg-accent rounded-md px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 dark:text-neutral-950"
         >
           연락하기
         </a>
