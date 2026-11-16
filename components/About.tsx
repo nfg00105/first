@@ -17,7 +17,10 @@ export default function About({ data }: { data: AboutData }) {
         </div>
         <ul className="space-y-2">
           {data.strengths.map((s) => (
-            <li key={s} className="border-border bg-card rounded-lg border px-4 py-3 text-sm">
+            <li
+              key={s}
+              className="rounded-lg border border-blue-900 bg-blue-900 px-5 py-4 text-lg font-semibold text-white"
+            >
               {s}
             </li>
           ))}
