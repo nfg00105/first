@@ -6,7 +6,7 @@ export default function Hero({ profile }: { profile: Profile }) {
       id="top"
       className="mx-auto flex min-h-svh max-w-5xl flex-col justify-center px-4 pt-14"
     >
-      <p className="text-accent mb-3 font-mono text-sm">{profile.role}</p>
+      <p className="shine-text mb-3 font-mono text-sm font-bold">{profile.role}</p>
       <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{profile.name}</h1>
       <p className="text-muted mt-5 max-w-2xl text-lg sm:text-xl">{profile.tagline}</p>
       <div className="no-print mt-8 flex flex-wrap gap-3">
