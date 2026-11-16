@@ -10,12 +10,14 @@ export default function Hero({ profile }: { profile: Profile }) {
       <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{profile.name}</h1>
       <p className="text-muted mt-5 max-w-2xl text-lg sm:text-xl">{profile.tagline}</p>
       <div className="no-print mt-8 flex flex-wrap gap-3">
-        <a
-          href={`mailto:${profile.email}`}
-          className="bg-accent rounded-md px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 dark:text-neutral-950"
-        >
-          연락하기
-        </a>
+        {profile.email ? (
+          <a
+            href={`mailto:${profile.email}`}
+            className="bg-accent rounded-md px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 dark:text-neutral-950"
+          >
+            연락하기
+          </a>
+        ) : null}
         {profile.resumePdf ? (
           <a
             href={profile.resumePdf}

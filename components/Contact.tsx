@@ -6,14 +6,16 @@ export default function Contact({ profile }: { profile: Profile }) {
     <Section id="contact" title="Contact">
       <p className="text-muted mb-6">협업 제안이나 문의는 언제든 환영합니다.</p>
       <ul className="flex flex-wrap gap-3">
-        <li>
-          <a
-            href={`mailto:${profile.email}`}
-            className="border-border hover:bg-card rounded-md border px-4 py-2 text-sm font-medium"
-          >
-            {profile.email}
-          </a>
-        </li>
+        {profile.email ? (
+          <li>
+            <a
+              href={`mailto:${profile.email}`}
+              className="border-border hover:bg-card rounded-md border px-4 py-2 text-sm font-medium"
+            >
+              {profile.email}
+            </a>
+          </li>
+        ) : null}
         {profile.links.map((l) => (
           <li key={l.label}>
             <a

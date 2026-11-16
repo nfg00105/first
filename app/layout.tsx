@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import resume from "@/data/resume.json";
+import resumeData from "@/data/resume.json";
 import { SITE_URL } from "@/lib/site";
+import type { Resume } from "@/types/resume";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
+const resume: Resume = resumeData;
 const { name, role, tagline } = resume.profile;
 
 export const metadata: Metadata = {
