@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "../styles/globals.css";
 import resumeData from "@/data/resume.json";
 import { SITE_URL } from "@/lib/site";
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           본문 바로가기
         </a>
         {children}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
