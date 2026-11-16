@@ -22,7 +22,7 @@ export default function ProgramsPage() {
       <header className="no-print border-border bg-background/80 fixed inset-x-0 top-0 z-50 border-b backdrop-blur">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
           <Link href="/#projects" className="text-muted hover:text-foreground text-sm font-medium">
-            ← 이력서로 돌아가기
+            ← 초기화면으로 돌아가기
           </Link>
           <ThemeToggle />
         </div>
