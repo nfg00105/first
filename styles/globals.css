@@ -48,7 +48,8 @@ html {
   }
   /* 반복 애니메이션은 깜빡임 방지를 위해 아예 멈춤 */
   .shine-text,
-  .animate-pulse {
+  .animate-pulse,
+  .animate-ping {
     animation: none !important;
   }
 }
