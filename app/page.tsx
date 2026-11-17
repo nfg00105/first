@@ -29,13 +29,14 @@ export default function Home() {
       <main id="main">
         <Hero profile={resume.profile} />
         <About data={resume.about} />
+        {/* 소개(업비트 시세 포함) 바로 아래에 Projects, Contact 배치 */}
+        <Projects items={resume.projects} />
+        {hasContact ? <Contact profile={resume.profile} /> : null}
         <Skills groups={resume.skills} />
         <Experience items={resume.experience} />
-        <Projects items={resume.projects} />
         {hasEducation ? (
           <Education education={resume.education} certifications={resume.certifications} />
         ) : null}
-        {hasContact ? <Contact profile={resume.profile} /> : null}
       </main>
       <Footer name={resume.profile.name} lastUpdated={resume.lastUpdated} />
     </>
