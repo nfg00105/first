@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { CoinTicker, NewsResponse, TickerResponse } from "@/types/market";
+import type { CoinTicker, TickerResponse } from "@/types/market";
 
 const TICKER_INTERVAL_MS = 5_000;
-const NEWS_INTERVAL_MS = 60_000;
 
 interface PollState<T> {
   data: T | null;
@@ -152,55 +151,11 @@ function UpbitPanel() {
   );
 }
 
-function NewsPanel() {
-  const { data, error } = usePolling<NewsResponse>("/api/news", NEWS_INTERVAL_MS);
-
-  return (
-    <section aria-label="네이버 실시간 뉴스" className={panel}>
-      <PanelHeader title="네이버 실시간 뉴스" />
-      {data && data.items.length > 0 ? (
-        <ul className="divide-border divide-y">
-          {data.items.map((item) => (
-            <li key={item.url} className="py-2.5">
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent line-clamp-2 text-sm leading-snug font-medium"
-              >
-                {item.title}
-              </a>
-              <time
-                dateTime={item.publishedAt}
-                className="text-muted mt-1 block text-xs tabular-nums"
-              >
-                {timeFormat.format(new Date(item.publishedAt))}
-              </time>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-muted py-6 text-center text-sm">
-          {error === "not_configured"
-            ? "네이버 API 키 설정이 필요합니다."
-            : error
-              ? "뉴스를 불러오지 못했습니다."
-              : data
-                ? "표시할 뉴스가 없습니다."
-                : "불러오는 중…"}
-        </p>
-      )}
-      <p className="text-muted mt-2 text-right text-[11px]">최신순 · 출처 네이버 뉴스</p>
-    </section>
-  );
-}
-
-// 업비트 주요 코인 시세 + 네이버 뉴스 (소개 섹션 오른쪽 열)
+// 업비트 주요 코인 시세 (소개 섹션 오른쪽 열)
 export default function MarketNews() {
   return (
-    <div className="no-print mt-8 space-y-6">
+    <div className="no-print mt-8">
       <UpbitPanel />
-      <NewsPanel />
     </div>
   );
 }

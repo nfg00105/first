@@ -27,7 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **콘텐츠와 코드 분리**: 이력서 콘텐츠(경력, 프로젝트, 기술 등)는 `data/`의 JSON/MDX로 관리하고, UI 컴포넌트에 하드코딩하지 않습니다.
 - **폴더 구조**: `app/`(라우트), `components/`, `data/resume.json`(콘텐츠), `types/resume.ts`(스키마), `public/`, `styles/globals.css`(테마 변수; 다크 모드는 `html.dark` 클래스)
 - **프로그램 목록(`/programs`)**: Supabase(`vaultnote` 프로젝트 재사용, 테이블 `resume_programs`)에 저장하는 유일한 동적 데이터. 조회는 공개, 쓰기는 Auth 사용자의 `app_metadata.role = 'admin'`만 가능(RLS). 접근 제어는 반드시 DB 정책으로 하고, 클라이언트의 isAdmin 판단은 UI 표시용이다. 같은 프로젝트의 vaultnote 테이블(`notes`, `folders` 등)은 다른 앱 소유이므로 수정하지 않는다.
-- **시세/뉴스 패널(소개 섹션)**: `components/MarketNews.tsx`가 서버 라우트 `app/api/upbit`(업비트 공개 시세, 키 불필요)와 `app/api/news`(네이버 검색 API, 서버 전용 `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET` 필요)를 폴링한다. 외부 API는 항상 서버 라우트를 거치고, 비밀키는 클라이언트에 노출하지 않는다.
+- **시세 패널(소개 섹션)**: `components/MarketNews.tsx`가 서버 라우트 `app/api/upbit`(업비트 공개 시세, 키 불필요)를 폴링한다. 외부 API는 항상 서버 라우트를 거치고, 비밀키는 클라이언트에 노출하지 않는다.
 - 환경변수 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`가 필요(Vercel과 `.env.local`). service_role 키는 절대 코드/환경변수에 넣지 않는다.
 
 ## 완료 기준 (Definition of Done)

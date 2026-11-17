@@ -1,4 +1,4 @@
-// 업비트 시세 / 네이버 뉴스 API 응답 타입 (서버 라우트와 클라이언트가 공유)
+// 업비트 시세 API 응답 타입 (서버 라우트와 클라이언트가 공유)
 
 export interface CoinTicker {
   /** 업비트 마켓 코드 (예: KRW-BTC) */
@@ -21,15 +21,4 @@ export interface TickerResponse {
   tickers: CoinTicker[];
   /** 서버가 업비트에서 받아온 시각 (ms) */
   updatedAt: number;
-}
-
-export interface NewsItem {
-  title: string;
-  url: string;
-  /** 발행 시각 (ISO 문자열) */
-  publishedAt: string;
-}
-
-export interface NewsResponse {
-  items: NewsItem[];
 }
