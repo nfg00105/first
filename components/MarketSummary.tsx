@@ -81,7 +81,7 @@ export default function MarketSummary() {
               name={s.topValue.name}
               sub={formatValue(s.topValue.value24h)}
             />
-            <Stat label="전체 거래대금" name="표시 종목 합계" sub={formatValue(s.total)} />
+            <Stat label="표시 종목 합계" name="거래대금" sub={formatValue(s.total)} />
           </div>
         </>
       ) : (
