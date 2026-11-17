@@ -48,7 +48,7 @@ const krw = new Intl.NumberFormat("ko-KR");
 
 function formatPrice(price: number) {
   // 저가 코인은 소수점까지 보여줘야 변동이 보임
-  const digits = price < 1 ? 4 : price < 100 ? 2 : 0;
+  const digits = price < 0.1 ? 6 : price < 1 ? 4 : price < 100 ? 2 : 0;
   return `${price.toLocaleString("ko-KR", { maximumFractionDigits: digits })}원`;
 }
 
@@ -134,7 +134,11 @@ function UpbitPanel() {
     <section aria-label="업비트 주요 코인 실시간 시세" className={panel}>
       <PanelHeader title="업비트 실시간 시세" note={updated ? `${updated} 기준` : undefined} />
       {data ? (
-        <ul className="divide-border divide-y">
+        <ul
+          tabIndex={0}
+          aria-label="코인 목록 (스크롤 가능)"
+          className="divide-border max-h-[32rem] divide-y overflow-y-auto overscroll-contain pr-1"
+        >
           {data.tickers.map((coin) => (
             <TickerRow key={coin.market} coin={coin} />
           ))}
