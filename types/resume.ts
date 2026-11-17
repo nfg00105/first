@@ -14,6 +14,14 @@ export interface About {
   summary: string[];
   philosophy: string;
   strengths: string[];
+  /** 소개 섹션(시세표 아래)에 표시할 바로가기 웹사이트 (선택) */
+  featuredSite?: FeaturedSite;
+}
+
+export interface FeaturedSite {
+  title: string;
+  description: string;
+  url: string;
 }
 
 export interface SkillGroup {

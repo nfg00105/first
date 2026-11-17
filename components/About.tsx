@@ -1,5 +1,6 @@
 import type { About as AboutData } from "@/types/resume";
 import MarketNews from "./MarketNews";
+import SiteLink from "./SiteLink";
 import Section from "./Section";
 
 export default function About({ data }: { data: AboutData }) {
@@ -28,6 +29,7 @@ export default function About({ data }: { data: AboutData }) {
             ))}
           </ul>
           <MarketNews />
+          {data.featuredSite ? <SiteLink site={data.featuredSite} /> : null}
         </div>
       </div>
     </Section>

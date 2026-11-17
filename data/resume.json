@@ -14,7 +14,12 @@
       "새롭게 어플 개발 프로젝트에 도전하고 있습니다."
     ],
     "philosophy": "세상을 호령하는 상남자",
-    "strengths": ["추진력", "현장 경험", "새로운 도전"]
+    "strengths": ["추진력", "현장 경험", "새로운 도전"],
+    "featuredSite": {
+      "title": "VaultNote — 제로지식 암호화 메모장",
+      "description": "메모 제목과 본문을 기기에서 암호화해 암호문만 저장하는 고보안 메모장",
+      "url": "https://guarded-scribe.vercel.app/"
+    }
   },
   "skills": [{ "category": "Projects", "items": ["어플 개발"] }],
   "experience": [
