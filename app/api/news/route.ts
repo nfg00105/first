@@ -50,7 +50,15 @@ export async function GET() {
       headers: { "X-Naver-Client-Id": id, "X-Naver-Client-Secret": secret },
       signal: AbortSignal.timeout(5000),
     });
-    if (!res.ok) throw new Error(`naver ${res.status}`);
+    if (!res.ok) {
+      // 원인 파악용 로그: 상태 코드와 네이버 오류 코드만 남기고 키 값은 기록하지 않는다
+      const detail = (await res.json().catch(() => null)) as {
+        errorCode?: string;
+        errorMessage?: string;
+      } | null;
+      console.error("naver news failed", res.status, detail?.errorCode, detail?.errorMessage);
+      throw new Error(`naver ${res.status}`);
+    }
 
     const data = (await res.json()) as { items?: NaverNewsItem[] };
     const items: NewsItem[] = (data.items ?? []).flatMap((n) => {
