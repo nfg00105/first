@@ -23,7 +23,7 @@ export default function Hero({ profile }: { profile: Profile }) {
               download
               className="border-border hover:bg-card rounded-md border px-5 py-2.5 text-sm font-semibold"
             >
-              이력서 다운로드
+              이력서 PDF 다운로드
             </a>
           ) : null}
         </div>

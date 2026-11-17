@@ -56,12 +56,7 @@ html {
 
 /* 번쩍이는 글자 효과: 밝은 빛줄기가 글자를 가로질러 지나감 */
 .shine-text {
-  background-image: linear-gradient(
-    110deg,
-    var(--accent) 35%,
-    #ffffff 50%,
-    var(--accent) 65%
-  );
+  background-image: linear-gradient(110deg, var(--accent) 35%, #ffffff 50%, var(--accent) 65%);
   background-size: 250% 100%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -96,9 +91,39 @@ body {
   .no-print {
     display: none !important;
   }
+  /* 다크 모드 고정이어도 인쇄/PDF는 흰 종이 기준 색으로 */
+  :root,
+  .dark {
+    --background: #fff;
+    --foreground: #111;
+    --muted: #444;
+    --card: #fff;
+    --border: #bbb;
+    --accent: #4338ca;
+  }
   body {
     background: #fff;
     color: #000;
+  }
+  /* 화면 높이 기준 여백 제거, 섹션 간격 축소 */
+  #top {
+    min-height: 0 !important;
+    padding: 0 1rem 1.5rem !important;
+  }
+  main section {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+  /* 강조색 배경 버튼은 인쇄에서도 흰 글씨 유지 */
+  .bg-accent {
+    color: #fff !important;
+  }
+  /* 번쩍이는 글자는 인쇄에서 단색으로 */
+  .shine-text {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: var(--accent) !important;
+    animation: none !important;
   }
   section {
     break-inside: avoid;
